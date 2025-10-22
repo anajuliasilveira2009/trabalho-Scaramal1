@@ -1,0 +1,14 @@
+/* Configuração de Fonte Global para Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+html { 
+    font-family: 'Inter', sans-serif; 
+    scroll-behavior: smooth; 
+}
+
+/* Estilo customizado para abas, garantindo que o texto não quebre */
+.tab-button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
