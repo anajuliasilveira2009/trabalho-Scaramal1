@@ -4,14 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conflitos Ambientais e de Saúde</title>
+    <!-- Carregando Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="script.js" defer></script>
+    <style>
+        /* Configuração de Fonte Global para Inter */
+        html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        /* Cores Personalizadas para o Tema Verde/Terra */
+        .tailwind-config {
+            display: none;
+        }
+        /* Estilo customizado para abas, garantindo que o texto não quebre */
+        .tab-button {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#064E3B', /* Verde Escuro, Profundo */
+                        'secondary-green': '#10B981', /* Verde Esmeralda */
+                        'accent-yellow': '#FBBF24', /* Amarelo Destaque */
+                        'background-light': '#F0FDF4', /* Verde Pálido de Fundo */
+                    }
+                }
+            }
+        }
+
+        // Função para mostrar a aba selecionada
+        function showTab(tabId) {
+            // Esconde todos os conteúdos das abas
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove o estilo ativo de todos os botões
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('bg-secondary-green', 'text-white', 'border-b-4', 'border-accent-yellow');
+                button.classList.add('text-primary-dark/80', 'hover:bg-primary-dark/10');
+            });
+
+            // Mostra o conteúdo da aba selecionada
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            // Adiciona o estilo ativo ao botão clicado
+            const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            if (activeButton) {
+                activeButton.classList.remove('text-primary-dark/80', 'hover:bg-primary-dark/10');
+                activeButton.classList.add('bg-secondary-green', 'text-white', 'border-b-4', 'border-accent-yellow');
+            }
+        }
+
+        // Garante que a primeira aba seja mostrada ao carregar a página
+        window.onload = () => showTab('tab-o-que-sao');
+    </script>
 </head>
 <body class="bg-background-light text-gray-800">
 
+    <!-- Navbar/Header Fixo -->
     <header class="sticky top-0 z-50 bg-primary-dark shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -24,9 +80,11 @@
         </div>
     </header>
 
+    <!-- Seção Principal (Hero) -->
     <section id="inicio" class="bg-primary-dark pt-10 pb-4 md:pt-16 md:pb-8 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="flex items-center justify-center mb-4">
+                <!-- Bandeira do Brasil (SVG) -->
                 <svg width="40" height="40" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
                     <rect width="22" height="16" fill="#009739"/>
                     <path d="M11.0003 1.83333L1.58366 8.00001L11.0003 14.1667L20.417 8.00001L11.0003 1.83333Z" fill="#FEE935"/>
@@ -43,6 +101,7 @@
         </div>
     </section>
 
+    <!-- Menu de Abas (Tabs) -->
     <nav class="bg-white shadow-xl">
         <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-start sm:justify-center overflow-x-auto">
@@ -61,6 +120,7 @@
                 <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-conclusao" onclick="showTab('tab-conclusao')">
                     Conclusão
                 </button>
+                <!-- NOVA ABA: Tag H1 -->
                 <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-tag-h1" onclick="showTab('tab-tag-h1')">
                     Tag H1
                 </button>
@@ -68,8 +128,10 @@
         </div>
     </nav>
 
+    <!-- Conteúdo das Abas -->
     <main class="py-12 md:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 1. O Que São Conflitos Ambientais? -->
             <div id="tab-o-que-sao" class="tab-content">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
                     O Que São Conflitos Ambientais?
@@ -84,6 +146,7 @@
                             O conflito surge porque a exploração de recursos em uma área afeta diretamente a qualidade de vida e o ambiente de quem depende daquele ecossistema.
                         </p>
                     </div>
+                    <!-- Imagem de Conflitos Ambientais (Upload) -->
                     <div class="bg-white p-4 rounded-xl shadow-xl border border-gray-300 flex items-center justify-center">
                         <img src="uploaded:Captura de tela 2025-10-22 103028.png-71695684-98d5-4cfe-baef-3cc7f8650f6a" 
                             alt="Ícones de sustentabilidade e meio ambiente ao redor do planeta Terra" 
@@ -92,6 +155,7 @@
                 </div>
             </div>
 
+            <!-- 2. Relação com a Saúde -->
             <div id="tab-relacao-saude" class="tab-content hidden">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
                     Relação Direta com a Saúde Humana
@@ -99,6 +163,7 @@
                 <p class="text-lg mb-8">A degradação ambiental tem um custo direto e alto para o corpo humano. Veja alguns exemplos:</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1: Poluição do Ar -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-secondary-green">
                         <div class="flex items-center mb-4">
                             <span class="text-4xl text-secondary-green mr-3">🌬️</span>
@@ -107,6 +172,7 @@
                         <p class="text-gray-700">A emissão de poluentes por indústrias e veículos é diretamente ligada ao aumento de **doenças respiratórias crônicas** (asma, bronquite) e câncer de pulmão.</p>
                     </div>
 
+                    <!-- Card 2: Contaminação da Água -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-accent-yellow">
                         <div class="flex items-center mb-4">
                             <span class="text-4xl text-accent-yellow mr-3">💧</span>
@@ -115,6 +181,7 @@
                         <p class="text-gray-700">O descarte incorreto de esgoto e resíduos químicos causa **problemas gastrointestinais** (diarreia, cólera) e intoxicação por metais pesados.</p>
                     </div>
 
+                    <!-- Card 3: Uso de Agrotóxicos -->
                     <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-primary-dark">
                         <div class="flex items-center mb-4">
                             <span class="text-4xl text-primary-dark mr-3">☠️</span>
@@ -125,6 +192,7 @@
                 </div>
             </div>
 
+            <!-- 3. Quem são as pessoas afetadas? -->
             <div id="tab-afetados" class="tab-content hidden">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
                     Quem São As Pessoas Mais Afetadas?
@@ -147,6 +215,7 @@
                 </div>
             </div>
 
+            <!-- 4. Como podemos intervir? -->
             <div id="tab-intervencao" class="tab-content hidden">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
                     Como Podemos Intervir?
@@ -154,6 +223,7 @@
                 <p class="text-lg mb-8">A intervenção eficaz exige a união da comunidade, governo e setor privado em busca de um bem comum, seguindo etapas claras:</p>
                 
                 <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Coluna 1: Identificação e Entendimento -->
                     <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-secondary-green">
                         <h4 class="text-2xl font-bold text-secondary-green mb-4 flex items-center">
                             <span class="mr-2 text-3xl">🔍</span> Identificação e Entendimento
@@ -164,6 +234,7 @@
                         </ul>
                     </div>
 
+                    <!-- Coluna 2: Ação e Solução -->
                     <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-accent-yellow">
                         <h4 class="text-2xl font-bold text-accent-yellow-dark mb-4 flex items-center">
                             <span class="mr-2 text-3xl">🛠️</span> Ação e Soluções Viáveis
@@ -177,5 +248,64 @@
                 </div>
             </div>
 
+            <!-- 5. Conclusão -->
             <div id="tab-conclusao" class="tab-content hidden">
-                <h2 class="text
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8 text-center">
+                    Conclusão
+                </h2>
+                <div class="bg-primary-dark text-white p-12 rounded-xl shadow-2xl text-center">
+                    <p class="text-2xl md:text-3xl font-semibold max-w-4xl mx-auto italic">
+                        "Os conflitos ambientais e de saúde mostram que meio ambiente e pessoas são inseparáveis.
+                    </p>
+                    <p class="text-4xl font-extrabold text-accent-yellow mt-4">
+                        Cuidar do planeta é também cuidar da nossa saúde.
+                    </p>
+                    <p class="mt-8 text-lg opacity-80">A solução reside na mudança de mentalidade, onde o lucro não se sobrepõe à vida, garantindo um futuro mais justo e saudável para todos.</p>
+                </div>
+            </div>
+
+            <!-- 6. Tag H1 (NOVA ABA) -->
+            <div id="tab-tag-h1" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Detalhes sobre a Tag &lt;h1&gt;
+                </h2>
+                <div class="bg-white p-8 rounded-xl shadow-2xl space-y-6">
+                    <h3 class="text-2xl font-bold text-secondary-green">O que faz a tag &lt;h1&gt;?</h3>
+                    <p class="text-lg">
+                        A tag <code>&lt;h1&gt;</code> (Heading 1) define o **título principal** (o cabeçalho de nível 1) de todo o conteúdo da sua página. Ela deve ser usada idealmente **apenas uma vez por página** e serve para dar o tema central de tudo o que está sendo apresentado.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-secondary-green">Por que ela foi escolhida para este site?</h3>
+                    <p class="text-lg">
+                        Neste site, a tag <code>&lt;h1&gt;</code> foi usada para o título "Conflitos Ambientais e de Saúde". Ela foi escolhida porque:
+                        <ul class="list-disc pl-6 space-y-2 mt-2 text-gray-700">
+                            <li><strong>Clareza:</strong> Define imediatamente o tópico principal do site para qualquer usuário.</li>
+                            <li><strong>Hierarquia:</strong> É o elemento de cabeçalho mais importante, indicando que este é o tema central.</li>
+                            <li><strong>Padrão Web:</strong> É a prática recomendada de desenvolvimento web usar <code>&lt;h1&gt;</code> para o título central do documento.</li>
+                        </ul>
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-secondary-green">Qual a importância desta tag para você?</h3>
+                    <p class="text-lg border-l-4 border-accent-yellow pl-4 italic bg-background-light p-4 rounded-lg">
+                        A importância do <code>&lt;h1&gt;</code> vai além da aparência. Ela é crucial para:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 text-lg text-gray-700">
+                        <li><strong>Acessibilidade:</strong> Leitores de tela para pessoas com deficiência visual dependem do <code>&lt;h1&gt;</code> para dar aos usuários um resumo rápido do conteúdo da página.</li>
+                        <li><strong>Motores de Busca (SEO):</strong> O Google e outros motores de busca usam o <code>&lt;h1&gt;</code> para entender sobre o que é a sua página, o que ajuda outras pessoas a encontrarem seu conteúdo.</li>
+                        <li><strong>Estrutura:</strong> Ela estabelece a base para todos os outros cabeçalhos (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.), criando uma estrutura lógica e organizada para o documento.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2025 BioConflitos. Todos os direitos reservados.</p>
+            <p class="text-xs mt-2 opacity-75">Design Responsivo com Tailwind CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
