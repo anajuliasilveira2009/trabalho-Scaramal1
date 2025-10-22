@@ -4,23 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conflitos Ambientais e de Saúde</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#064E3B', /* Verde Escuro, Profundo */
-                        'secondary-green': '#10B981', /* Verde Esmeralda */
-                        'accent-yellow': '#FBBF24', /* Amarelo Destaque */
-                        'background-light': '#F0FDF4', /* Verde Pálido de Fundo */
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js" defer></script>
 </head>
 <body class="bg-background-light text-gray-800">
 
@@ -58,7 +46,7 @@
     <nav class="bg-white shadow-xl">
         <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-start sm:justify-center overflow-x-auto">
-                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-o-que-sao" onclick="showTab('tab-o-que-sao')">
+                <button class="tab-button bg-secondary-green text-white border-b-4 border-accent-yellow px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-o-que-sao" onclick="showTab('tab-o-que-sao')">
                     O Que São Conflitos Ambientais?
                 </button>
                 <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-relacao-saude" onclick="showTab('tab-relacao-saude')">
@@ -72,6 +60,9 @@
                 </button>
                 <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-conclusao" onclick="showTab('tab-conclusao')">
                     Conclusão
+                </button>
+                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-tag-h1" onclick="showTab('tab-tag-h1')">
+                    Tag H1
                 </button>
             </div>
         </div>
@@ -120,3 +111,71 @@
                         <div class="flex items-center mb-4">
                             <span class="text-4xl text-accent-yellow mr-3">💧</span>
                             <h3 class="text-xl font-bold text-gray-900">Água Contaminada</h3>
+                        </div>
+                        <p class="text-gray-700">O descarte incorreto de esgoto e resíduos químicos causa **problemas gastrointestinais** (diarreia, cólera) e intoxicação por metais pesados.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-primary-dark">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-primary-dark mr-3">☠️</span>
+                            <h3 class="text-xl font-bold text-gray-900">Uso de Agrotóxicos</h3>
+                        </div>
+                        <p class="text-gray-700">O contato direto ou o consumo de alimentos com resíduos de agrotóxicos pode levar a **intoxicações agudas e crônicas**, além de aumentar o risco de câncer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-afetados" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Quem São As Pessoas Mais Afetadas?
+                </h2>
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <h3 class="text-2xl font-bold text-secondary-green mb-4">Distribuição do Impacto</h3>
+                    <p class="text-lg">Os conflitos ambientais expõem desigualdades e injustiças. Os impactos não são distribuídos igualmente, afetando grupos específicos:</p>
+                    <ul class="list-disc pl-5 space-y-4 text-xl mt-6 text-gray-700">
+                        <li class="p-2 border-b border-gray-100">
+                            <strong>Comunidades próximas a áreas poluídas:</strong> Moradores de bairros adjacentes a indústrias, aterros sanitários ou áreas de mineração, que sofrem com a contaminação do ar, água e solo.
+                        </li>
+                        <li class="p-2 border-b border-gray-100">
+                            <strong>Trabalhadores expostos a produtos tóxicos:</strong> Funcionários em setores como agricultura (agrotóxicos), metalurgia ou reciclagem, que enfrentam riscos ocupacionais diretos.
+                        </li>
+                        <li class="p-2">
+                            <strong>A sociedade em geral:</strong> Com o aumento das doenças ligadas à degradação ambiental, há um aumento nos custos de saúde pública e uma queda na qualidade de vida para todos.
+                        </li>
+                    </ul>
+                    <p class="mt-8 italic text-gray-600">A busca por lucro a curto prazo frequentemente ignora os custos a longo prazo para o planeta e para as futuras gerações.</p>
+                </div>
+            </div>
+
+            <div id="tab-intervencao" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Como Podemos Intervir?
+                </h2>
+                <p class="text-lg mb-8">A intervenção eficaz exige a união da comunidade, governo e setor privado em busca de um bem comum, seguindo etapas claras:</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-secondary-green">
+                        <h4 class="text-2xl font-bold text-secondary-green mb-4 flex items-center">
+                            <span class="mr-2 text-3xl">🔍</span> Identificação e Entendimento
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-3 text-lg">
+                            <li>**Identificar o Problema Real:** Fazer um levantamento detalhado das fontes de poluição ou degradação.</li>
+                            <li>**Entender Quem Sofre:** Mapear e ouvir as comunidades e trabalhadores mais vulneráveis para compreender as necessidades.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-accent-yellow">
+                        <h4 class="text-2xl font-bold text-accent-yellow-dark mb-4 flex items-center">
+                            <span class="mr-2 text-3xl">🛠️</span> Ação e Soluções Viáveis
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-3 text-lg">
+                            <li>**Buscar Soluções Viáveis:** Promover tecnologias e práticas que equilibrem desenvolvimento econômico e sustentabilidade.</li>
+                            <li>**Organização Local:** Formar grupos de pressão para exigir políticas públicas de saneamento e controle ambiental.</li>
+                            <li>**Legislação Rígida:** Fortalecer e aplicar leis de proteção ambiental com penalidades severas para infratores.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-conclusao" class="tab-content hidden">
+                <h2 class="text

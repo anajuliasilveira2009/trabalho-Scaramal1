@@ -6,9 +6,58 @@ html {
     scroll-behavior: smooth; 
 }
 
+/* Variáveis CSS para as cores customizadas do Tema Verde/Terra, 
+   baseadas na configuração original do tailwind.config. 
+*/
+:root {
+    --color-primary-dark: #064E3B; /* Verde Escuro, Profundo */
+    --color-secondary-green: #10B981; /* Verde Esmeralda */
+    --color-accent-yellow: #FBBF24; /* Amarelo Destaque */
+    --color-background-light: #F0FDF4; /* Verde Pálido de Fundo */
+}
+
+/* Configuração do Tailwind: 
+   Para que as classes do HTML funcionem, você precisa garantir que o 
+   Tailwind saiba sobre as cores customizadas. No seu código original 
+   com CDN, isso era feito no script. Em um projeto real, você 
+   usaria um arquivo de configuração `tailwind.config.js` e 
+   compilaria o CSS. 
+   
+   Para simular isso mantendo a estrutura CDN, o seu HTML 
+   original usava o script `tailwind.config`. O código 
+   abaixo é apenas o CSS customizado que não são classes utilitárias.
+*/
+
 /* Estilo customizado para abas, garantindo que o texto não quebre */
 .tab-button {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* Estilos de fundo e texto que usam as variáveis customizadas para fallback/clareza */
+.bg-primary-dark {
+    background-color: var(--color-primary-dark);
+}
+.bg-background-light {
+    background-color: var(--color-background-light);
+}
+.text-primary-dark {
+    color: var(--color-primary-dark);
+}
+.text-secondary-green {
+    color: var(--color-secondary-green);
+}
+.text-accent-yellow {
+    color: var(--color-accent-yellow);
+}
+.border-secondary-green {
+    border-color: var(--color-secondary-green);
+}
+.border-accent-yellow {
+    border-color: var(--color-accent-yellow);
+}
+/* A maioria das cores com `/` como `text-primary-dark/80` são 
+   classes utilitárias diretas do Tailwind e não precisam ser reescritas 
+   aqui, exceto se você não estiver usando o CDN.
+*/
