@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conflitos Ambientais e de Saúde</title>
+    <!-- Carregando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configuração de Fonte Global para Inter */
+        html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        /* Cores Personalizadas para o Tema Verde/Terra */
+        .tailwind-config {
+            display: none;
+        }
+        /* Estilo customizado para abas, garantindo que o texto não quebre */
+        .tab-button {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#064E3B', /* Verde Escuro, Profundo */
+                        'secondary-green': '#10B981', /* Verde Esmeralda */
+                        'accent-yellow': '#FBBF24', /* Amarelo Destaque */
+                        'background-light': '#F0FDF4', /* Verde Pálido de Fundo */
+                    }
+                }
+            }
+        }
+
+        // Função para mostrar a aba selecionada
+        function showTab(tabId) {
+            // Esconde todos os conteúdos das abas
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove o estilo ativo de todos os botões
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('bg-secondary-green', 'text-white', 'border-b-4', 'border-accent-yellow');
+                button.classList.add('text-primary-dark/80', 'hover:bg-primary-dark/10');
+            });
+
+            // Mostra o conteúdo da aba selecionada
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            // Adiciona o estilo ativo ao botão clicado
+            const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            if (activeButton) {
+                activeButton.classList.remove('text-primary-dark/80', 'hover:bg-primary-dark/10');
+                activeButton.classList.add('bg-secondary-green', 'text-white', 'border-b-4', 'border-accent-yellow');
+            }
+        }
+
+        // Garante que a primeira aba seja mostrada ao carregar a página
+        window.onload = () => showTab('tab-o-que-sao');
+    </script>
+</head>
+<body class="bg-background-light text-gray-800">
+
+    <!-- Navbar/Header Fixo -->
+    <header class="sticky top-0 z-50 bg-primary-dark shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-extrabold text-white tracking-tight">
+                        BioConflitos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Principal (Hero) -->
+    <section id="inicio" class="bg-primary-dark pt-10 pb-4 md:pt-16 md:pb-8 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <!-- Bandeira do Brasil (SVG) -->
+                <svg width="40" height="40" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-3">
+                    <rect width="22" height="16" fill="#009739"/>
+                    <path d="M11.0003 1.83333L1.58366 8.00001L11.0003 14.1667L20.417 8.00001L11.0003 1.83333Z" fill="#FEE935"/>
+                    <circle cx="11" cy="8.00001" r="3.16667" fill="#002776"/>
+                    <path d="M11 5.5V5.50833L9.66667 7.25L7.91667 8L9.66667 8.75L11 10.5V10.5083L12.3333 8.75L14.0833 8L12.3333 7.25L11 5.5Z" fill="white"/>
+                </svg>
+                <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">
+                    <span class="text-accent-yellow">Conflitos</span> Ambientais e de Saúde
+                </h1>
+            </div>
+            <p class="text-lg sm:text-xl max-w-3xl mx-auto font-light opacity-90">
+                Uma análise do contexto brasileiro sobre a interconexão entre degradação e bem-estar.
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu de Abas (Tabs) -->
+    <nav class="bg-white shadow-xl">
+        <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-start sm:justify-center overflow-x-auto">
+                <button class="tab-button bg-secondary-green text-white border-b-4 border-accent-yellow px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-o-que-sao" onclick="showTab('tab-o-que-sao')">
+                    O Que São Conflitos Ambientais?
+                </button>
+                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-relacao-saude" onclick="showTab('tab-relacao-saude')">
+                    Relação com a Saúde
+                </button>
+                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-afetados" onclick="showTab('tab-afetados')">
+                    Pessoas Afetadas
+                </button>
+                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-intervencao" onclick="showTab('tab-intervencao')">
+                    Como Podemos Intervir?
+                </button>
+                <button class="tab-button text-primary-dark/80 hover:bg-primary-dark/10 px-4 py-3 text-sm sm:text-base font-semibold transition duration-300" data-tab="tab-conclusao" onclick="showTab('tab-conclusao')">
+                    Conclusão
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo das Abas -->
+    <main class="py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 1. O Que São Conflitos Ambientais? -->
+            <div id="tab-o-que-sao" class="tab-content">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    O Que São Conflitos Ambientais?
+                </h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-lg">
+                        <h3 class="text-2xl font-bold text-secondary-green mb-4">Definição</h3>
+                        <p>
+                            São situações onde o uso, o controle ou o acesso aos recursos naturais (como água, solo e florestas) gera uma <strong>disputa entre grupos</strong>, como empresas, governo e comunidades locais. Ocorre quando o interesse econômico se choca com a necessidade de preservação e saúde pública.
+                        </p>
+                        <p class="border-l-4 border-secondary-green pl-4 italic bg-background-light p-4 rounded-lg shadow-inner">
+                            O conflito surge porque a exploração de recursos em uma área afeta diretamente a qualidade de vida e o ambiente de quem depende daquele ecossistema.
+                        </p>
+                    </div>
+                    <!-- Imagem de Conflitos Ambientais (Upload) -->
+                    <div class="bg-white p-4 rounded-xl shadow-xl border border-gray-300 flex items-center justify-center">
+                        <img src="uploaded:Captura de tela 2025-10-22 103028.png-71695684-98d5-4cfe-baef-3cc7f8650f6a" 
+                            alt="Ícones de sustentabilidade e meio ambiente ao redor do planeta Terra" 
+                            class="w-full h-auto max-h-80 object-contain rounded-lg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Relação com a Saúde -->
+            <div id="tab-relacao-saude" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Relação Direta com a Saúde Humana
+                </h2>
+                <p class="text-lg mb-8">A degradação ambiental tem um custo direto e alto para o corpo humano. Veja alguns exemplos:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1: Poluição do Ar -->
+                    <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-secondary-green">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-secondary-green mr-3">🌬️</span>
+                            <h3 class="text-xl font-bold text-gray-900">Poluição do Ar</h3>
+                        </div>
+                        <p class="text-gray-700">A emissão de poluentes por indústrias e veículos é diretamente ligada ao aumento de **doenças respiratórias crônicas** (asma, bronquite) e câncer de pulmão.</p>
+                    </div>
+
+                    <!-- Card 2: Contaminação da Água -->
+                    <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-accent-yellow">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-accent-yellow mr-3">💧</span>
+                            <h3 class="text-xl font-bold text-gray-900">Água Contaminada</h3>
+                        </div>
+                        <p class="text-gray-700">O descarte incorreto de esgoto e resíduos químicos causa **problemas gastrointestinais** (diarreia, cólera) e intoxicação por metais pesados.</p>
+                    </div>
+
+                    <!-- Card 3: Uso de Agrotóxicos -->
+                    <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-primary-dark">
+                        <div class="flex items-center mb-4">
+                            <span class="text-4xl text-primary-dark mr-3">☠️</span>
+                            <h3 class="text-xl font-bold text-gray-900">Uso de Agrotóxicos</h3>
+                        </div>
+                        <p class="text-gray-700">O contato direto ou o consumo de alimentos com resíduos de agrotóxicos pode levar a **intoxicações agudas e crônicas**, além de aumentar o risco de câncer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Quem são as pessoas afetadas? -->
+            <div id="tab-afetados" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Quem São As Pessoas Mais Afetadas?
+                </h2>
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <h3 class="text-2xl font-bold text-secondary-green mb-4">Distribuição do Impacto</h3>
+                    <p class="text-lg">Os conflitos ambientais expõem desigualdades e injustiças. Os impactos não são distribuídos igualmente, afetando grupos específicos:</p>
+                    <ul class="list-disc pl-5 space-y-4 text-xl mt-6 text-gray-700">
+                        <li class="p-2 border-b border-gray-100">
+                            <strong>Comunidades próximas a áreas poluídas:</strong> Moradores de bairros adjacentes a indústrias, aterros sanitários ou áreas de mineração, que sofrem com a contaminação do ar, água e solo.
+                        </li>
+                        <li class="p-2 border-b border-gray-100">
+                            <strong>Trabalhadores expostos a produtos tóxicos:</strong> Funcionários em setores como agricultura (agrotóxicos), metalurgia ou reciclagem, que enfrentam riscos ocupacionais diretos.
+                        </li>
+                        <li class="p-2">
+                            <strong>A sociedade em geral:</strong> Com o aumento das doenças ligadas à degradação ambiental, há um aumento nos custos de saúde pública e uma queda na qualidade de vida para todos.
+                        </li>
+                    </ul>
+                    <p class="mt-8 italic text-gray-600">A busca por lucro a curto prazo frequentemente ignora os custos a longo prazo para o planeta e para as futuras gerações.</p>
+                </div>
+            </div>
+
+            <!-- 4. Como podemos intervir? -->
+            <div id="tab-intervencao" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8">
+                    Como Podemos Intervir?
+                </h2>
+                <p class="text-lg mb-8">A intervenção eficaz exige a união da comunidade, governo e setor privado em busca de um bem comum, seguindo etapas claras:</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Coluna 1: Identificação e Entendimento -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-secondary-green">
+                        <h4 class="text-2xl font-bold text-secondary-green mb-4 flex items-center">
+                            <span class="mr-2 text-3xl">🔍</span> Identificação e Entendimento
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-3 text-lg">
+                            <li>**Identificar o Problema Real:** Fazer um levantamento detalhado das fontes de poluição ou degradação.</li>
+                            <li>**Entender Quem Sofre:** Mapear e ouvir as comunidades e trabalhadores mais vulneráveis para compreender as necessidades.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Coluna 2: Ação e Solução -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-accent-yellow">
+                        <h4 class="text-2xl font-bold text-accent-yellow-dark mb-4 flex items-center">
+                            <span class="mr-2 text-3xl">🛠️</span> Ação e Soluções Viáveis
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-3 text-lg">
+                            <li>**Buscar Soluções Viáveis:** Promover tecnologias e práticas que equilibrem desenvolvimento econômico e sustentabilidade.</li>
+                            <li>**Organização Local:** Formar grupos de pressão para exigir políticas públicas de saneamento e controle ambiental.</li>
+                            <li>**Legislação Rígida:** Fortalecer e aplicar leis de proteção ambiental com penalidades severas para infratores.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Conclusão -->
+            <div id="tab-conclusao" class="tab-content hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-8 text-center">
+                    Conclusão
+                </h2>
+                <div class="bg-primary-dark text-white p-12 rounded-xl shadow-2xl text-center">
+                    <p class="text-2xl md:text-3xl font-semibold max-w-4xl mx-auto italic">
+                        "Os conflitos ambientais e de saúde mostram que meio ambiente e pessoas são inseparáveis.
+                    </p>
+                    <p class="text-4xl font-extrabold text-accent-yellow mt-4">
+                        Cuidar do planeta é também cuidar da nossa saúde.
+                    </p>
+                    <p class="mt-8 text-lg opacity-80">A solução reside na mudança de mentalidade, onde o lucro não se sobrepõe à vida, garantindo um futuro mais justo e saudável para todos.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2025 BioConflitos. Todos os direitos reservados.</p>
+            <p class="text-xs mt-2 opacity-75">Design Responsivo com Tailwind CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
